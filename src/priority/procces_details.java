@@ -14,14 +14,16 @@ public class  procces_details extends javax.swing.JFrame {
   /*  process_number num=new process_number();*/
     /*
     
+    
     int numofprocess= num.numofprocess;*/
     
      int numofprocess=process_number.numofprocess;
         ArrayList<Integer> arrival_Timej = new ArrayList<>();
        ArrayList<Integer> burstTimej = new ArrayList<>();
        ArrayList<Integer> priorityj = new ArrayList<>();
+       
 
-     
+    
       
 
     /**
@@ -31,7 +33,44 @@ public class  procces_details extends javax.swing.JFrame {
         
         
         initComponents();
- 
+  if(numofprocess<1){
+        jTextField1.setVisible(false);
+       jTextField2.setVisible(false);
+   jTextField11.setVisible(false);
+   
+        
+        }
+   if(numofprocess<2){
+        jTextField3.setVisible(false);
+       jTextField4.setVisible(false);
+   jTextField12.setVisible(false);
+      jLabel3.setVisible(false);
+        
+        }
+    if(numofprocess<3){
+        jTextField5.setVisible(false);
+       jTextField6.setVisible(false);
+   jTextField13.setVisible(false);
+         jLabel4.setVisible(false);
+
+        
+        }
+     if(numofprocess<4){
+        jTextField8.setVisible(false);
+       jTextField7.setVisible(false);
+   jTextField14.setVisible(false);
+         jLabel5.setVisible(false);
+
+        
+        }
+      if(numofprocess<5){
+        jTextField10.setVisible(false);
+       jTextField9.setVisible(false);
+   jTextField15.setVisible(false);
+         jLabel6.setVisible(false);
+
+        
+        }
       
       
         
@@ -351,6 +390,7 @@ public class  procces_details extends javax.swing.JFrame {
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
+       
       
     }//GEN-LAST:event_jTextField3ActionPerformed
 
@@ -390,11 +430,19 @@ public class  procces_details extends javax.swing.JFrame {
         burstTimej.add(Integer.parseInt(jTextField2.getText().trim()));
          priorityj.add(Integer.parseInt(jTextField11.getText().trim()));
         }
+       
         
          if(numofprocess>=2){
         arrival_Timej.add(Integer.parseInt(jTextField3.getText().trim()));
         burstTimej.add(Integer.parseInt(jTextField4.getText().trim()));
          priorityj.add(Integer.parseInt(jTextField12.getText().trim()));
+        }
+            else{
+        jTextField3.setVisible(false);
+       jTextField4.setVisible(false);
+   jTextField12.setVisible(false);
+   jLabel2.setVisible(false);
+        
         }
         
          
@@ -405,16 +453,34 @@ public class  procces_details extends javax.swing.JFrame {
         burstTimej.add(Integer.parseInt(jTextField6.getText().trim()));
          priorityj.add(Integer.parseInt(jTextField13.getText().trim()));
         }
+             else{
+        jTextField5.setVisible(false);
+       jTextField6.setVisible(false);
+   jTextField13.setVisible(false);
+        
+        }
           
            if(numofprocess>=4){
         arrival_Timej.add(Integer.parseInt(jTextField7.getText().trim()));
         burstTimej.add(Integer.parseInt(jTextField8.getText().trim()));
           priorityj.add(Integer.parseInt(jTextField14.getText().trim()));
         }
+              else{
+        jTextField7.setVisible(false);
+       jTextField8.setVisible(false);
+   jTextField14.setVisible(false);
+        
+        }
             if(numofprocess>=5){
         arrival_Timej.add(Integer.parseInt(jTextField9.getText().trim()));
         burstTimej.add(Integer.parseInt(jTextField10.getText().trim()));
           priorityj.add(Integer.parseInt(jTextField15.getText().trim()));
+        }
+               else{
+        jTextField9.setVisible(false);
+       jTextField10.setVisible(false);
+   jTextField15.setVisible(false);
+        
         }
                 Priority schu=new Priority(arrival_Timej, burstTimej, priorityj);
                  schu.schedule();

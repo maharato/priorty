@@ -1,17 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package priority;
-
-import java.util.ArrayList;
 import java.util.*;
 
-/**
- *
- * @author ahmed
- */
-import java.util.ArrayList;
 
 public class Priority {
     ArrayList<Integer> arrival_Time = new ArrayList<>();
@@ -22,6 +11,7 @@ public class Priority {
     ArrayList<Integer> responseTime = new ArrayList<>();
     ArrayList<Integer> priority = new ArrayList<>();
     ArrayList<Boolean> isCompleted = new ArrayList<>();
+    ArrayList<Integer> startTime = new ArrayList<>(); // 👈 Added for Gantt Chart
 
     int currenttime = 0;
     public int numofprocess;
@@ -42,6 +32,7 @@ public class Priority {
             waitingTime.add(0);
             turnaroundTime.add(0);
             responseTime.add(0);
+            startTime.add(0);  // 👈 Also initialize startTime
             isCompleted.add(false);
         }
     }
@@ -68,6 +59,7 @@ public class Priority {
                 continue;
             }
 
+            startTime.set(next, currenttime); // 👈 Record the start time
             responseTime.set(next, currenttime - arrival_Time.get(next));
             currenttime += burstTime.get(next);
             completionTime.set(next, currenttime);
@@ -115,4 +107,39 @@ public class Priority {
         }
         return max;
     }
+
+    // 👉 NEW FUNCTION TO GET START AND END TIMES FOR GANTT CHART
+  public ArrayList<int[]> getGanttChartData() {
+    ArrayList<int[]> ganttData = new ArrayList<>();
+    
+    // نضيف start و end في متغيرات منفصلة
+    ArrayList<Integer> startTimes = new ArrayList<>();
+    ArrayList<Integer> endTimes = new ArrayList<>();
+    
+    for (int i = 0; i < numofprocess; i++) {
+        if (isCompleted.get(i)) {
+            startTimes.add(startTime.get(i));
+            endTimes.add(completionTime.get(i));
+        }
+    }
+
+    // ترتيب بيانات البداية والنهاية حسب البداية
+    ArrayList<int[]> sortedGanttData = new ArrayList<>();
+    for (int i = 0; i < startTimes.size(); i++) {
+        sortedGanttData.add(new int[]{startTimes.get(i)/*, endTimes.get(i)*/});
+    }
+
+    // فرز الـ sortedGanttData بناءً على وقت البداية
+    sortedGanttData.sort(new Comparator<int[]>() {
+        @Override
+        public int compare(int[] process1, int[] process2) {
+            return Integer.compare(process1[0], process2[0]);  // مقارنة على حسب البداية
+        }
+    });
+
+    // إضافة العناصر المرتبة إلى ganttData
+    ganttData.addAll(sortedGanttData);
+    
+    return ganttData;
+}
 }
