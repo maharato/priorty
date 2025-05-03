@@ -11,11 +11,7 @@ import java.util.*;
  * @author ahmed
  */
 public class  procces_details extends javax.swing.JFrame {
-  /*  process_number num=new process_number();*/
-    /*
-    
-    
-    int numofprocess= num.numofprocess;*/
+
     
      int numofprocess=process_number.numofprocess;
         ArrayList<Integer> arrival_Timej = new ArrayList<>();
@@ -437,6 +433,7 @@ public class  procces_details extends javax.swing.JFrame {
         burstTimej.add(Integer.parseInt(jTextField4.getText().trim()));
          priorityj.add(Integer.parseInt(jTextField12.getText().trim()));
         }
+         /*
             else{
         jTextField3.setVisible(false);
        jTextField4.setVisible(false);
@@ -444,7 +441,7 @@ public class  procces_details extends javax.swing.JFrame {
    jLabel2.setVisible(false);
         
         }
-        
+        */
          
       
          
@@ -453,35 +450,39 @@ public class  procces_details extends javax.swing.JFrame {
         burstTimej.add(Integer.parseInt(jTextField6.getText().trim()));
          priorityj.add(Integer.parseInt(jTextField13.getText().trim()));
         }
+          /*
              else{
         jTextField5.setVisible(false);
        jTextField6.setVisible(false);
    jTextField13.setVisible(false);
         
         }
+          */
           
            if(numofprocess>=4){
         arrival_Timej.add(Integer.parseInt(jTextField7.getText().trim()));
         burstTimej.add(Integer.parseInt(jTextField8.getText().trim()));
           priorityj.add(Integer.parseInt(jTextField14.getText().trim()));
         }
+           /*
               else{
         jTextField7.setVisible(false);
        jTextField8.setVisible(false);
    jTextField14.setVisible(false);
         
         }
+           */
             if(numofprocess>=5){
         arrival_Timej.add(Integer.parseInt(jTextField9.getText().trim()));
         burstTimej.add(Integer.parseInt(jTextField10.getText().trim()));
           priorityj.add(Integer.parseInt(jTextField15.getText().trim()));
         }
-               else{
+        /*       else{
         jTextField9.setVisible(false);
        jTextField10.setVisible(false);
    jTextField15.setVisible(false);
         
-        }
+        }*/
                 Priority schu=new Priority(arrival_Timej, burstTimej, priorityj);
                  schu.schedule();
             new process_sumary(schu).setVisible(true);

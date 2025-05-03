@@ -11,7 +11,7 @@ public class Priority {
     ArrayList<Integer> responseTime = new ArrayList<>();
     ArrayList<Integer> priority = new ArrayList<>();
     ArrayList<Boolean> isCompleted = new ArrayList<>();
-    ArrayList<Integer> startTime = new ArrayList<>(); // 👈 Added for Gantt Chart
+    ArrayList<Integer> startTime = new ArrayList<>();
 
     int currenttime = 0;
     public int numofprocess;
@@ -26,13 +26,13 @@ public class Priority {
         this.priority = new ArrayList<>(priority);
         this.numofprocess = arrival_Time.size();
 
-        // Initialize all time lists
+      
         for (int i = 0; i < numofprocess; i++) {
             completionTime.add(0);
             waitingTime.add(0);
             turnaroundTime.add(0);
             responseTime.add(0);
-            startTime.add(0);  // 👈 Also initialize startTime
+            startTime.add(0); 
             isCompleted.add(false);
         }
     }
@@ -42,10 +42,25 @@ public class Priority {
         int completed = 0;
 
         while (completed < numofprocess) {
-            int next = -1;
+            
+      /*index*/      int next = -1;
             int highestPrio = Integer.MAX_VALUE;
+            
+            
+                       /*
+                 examble
+                
+           index = 4      p=1   not completed process
+           index = 3      p=2   not completed process
+           index = 2      p= 3  not completed process       
+           index = 1      p= 4  not completed process
+           index = 0      p= 5  not completed process
+                */
 
             for (int i = 0; i < numofprocess; i++) {
+                
+     
+                
                 if (!isCompleted.get(i) && arrival_Time.get(i) <= currenttime) {
                     if (priority.get(i) < highestPrio) {
                         highestPrio = priority.get(i);
@@ -59,7 +74,7 @@ public class Priority {
                 continue;
             }
 
-            startTime.set(next, currenttime); // 👈 Record the start time
+            startTime.set(next, currenttime);
             responseTime.set(next, currenttime - arrival_Time.get(next));
             currenttime += burstTime.get(next);
             completionTime.set(next, currenttime);
@@ -108,11 +123,11 @@ public class Priority {
         return max;
     }
 
-    // 👉 NEW FUNCTION TO GET START AND END TIMES FOR GANTT CHART
+    
   public ArrayList<int[]> getGanttChartData() {
     ArrayList<int[]> ganttData = new ArrayList<>();
     
-    // نضيف start و end في متغيرات منفصلة
+    
     ArrayList<Integer> startTimes = new ArrayList<>();
     ArrayList<Integer> endTimes = new ArrayList<>();
     
@@ -123,21 +138,21 @@ public class Priority {
         }
     }
 
-    // ترتيب بيانات البداية والنهاية حسب البداية
+   
     ArrayList<int[]> sortedGanttData = new ArrayList<>();
     for (int i = 0; i < startTimes.size(); i++) {
         sortedGanttData.add(new int[]{startTimes.get(i)/*, endTimes.get(i)*/});
     }
 
-    // فرز الـ sortedGanttData بناءً على وقت البداية
+   
     sortedGanttData.sort(new Comparator<int[]>() {
         @Override
         public int compare(int[] process1, int[] process2) {
-            return Integer.compare(process1[0], process2[0]);  // مقارنة على حسب البداية
+            return Integer.compare(process1[0], process2[0]);  
         }
     });
 
-    // إضافة العناصر المرتبة إلى ganttData
+    
     ganttData.addAll(sortedGanttData);
     
     return ganttData;
