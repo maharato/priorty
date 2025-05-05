@@ -4,6 +4,7 @@
  */
 package priority;
 import java.util.*;
+import java.awt.Dimension;
 
 
 
@@ -14,6 +15,7 @@ import java.util.*;
 public class process_sumary extends javax.swing.JFrame {
 
       Priority schu;
+
       
 
     /**
@@ -30,6 +32,11 @@ public class process_sumary extends javax.swing.JFrame {
  jTextField3.setText(String.format("%.2f", schu.getTotalCompletionTime()));
   jTextField4.setText(String.format("%.2f", schu.getAverageWaitingTime()));
     jTextField5.setText(String.format("%.2f", schu.getAverageTurnaroundTime()));
+   /* 
+int value1=Integer.parseInt(Arrays.toString(current.get(0)));
+jPanel2.setPreferredSize(new Dimension(value1, 100));
+*/
+ 
          
          
    
@@ -97,6 +104,7 @@ public class process_sumary extends javax.swing.JFrame {
           }
        
                  if(schu.numofprocess==3){
+                      jTextField9.setVisible(true);
             jTextField9.setText(String.format("%.0f", schu.getTotalCompletionTime()));
           
           
@@ -112,6 +120,7 @@ public class process_sumary extends javax.swing.JFrame {
 
           }
                if(schu.numofprocess==4){
+                     jTextField10.setVisible(true);
             jTextField10.setText(String.format("%.0f", schu.getTotalCompletionTime()));
           
           
@@ -477,13 +486,13 @@ public class process_sumary extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(215, 215, 215)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80)
-                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63)
+                        .addGap(204, 204, 204)
+                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55)
+                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55)
+                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)
                         .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(159, 159, 159)
