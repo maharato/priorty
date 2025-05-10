@@ -128,6 +128,7 @@ String text = ((JSpinner.DefaultEditor)jSpinner2.getEditor()).getTextField().get
          numofprocess=value;
       
        new procces_details().setVisible(true);
+        setVisible(false);
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
